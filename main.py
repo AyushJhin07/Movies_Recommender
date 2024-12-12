@@ -7,7 +7,56 @@ import joblib
 from sklearn.preprocessing import normalize
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
+import os
+import requests
 
+# ------------------------------
+# Google Drive Links for Model Files
+# ------------------------------
+
+MODEL_FILES = {
+    'TfidfVectorizer.joblib': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_1',
+    'categorical_tfidf.joblib': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_2',
+    'knn_model.joblib': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3',
+    'combined_features_normalized.npy': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_4',
+    'movies_with_embeddings.csv': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_5'
+}
+
+# ------------------------------
+# Helper Function to Download Files
+# ------------------------------
+
+def download_file(file_name, url):
+    """
+    Download a file from a given URL and save it locally if it does not already exist.
+
+    Parameters:
+        file_name (str): Name of the file to save.
+        url (str): Download URL.
+
+    Returns:
+        str: Path to the downloaded or existing file.
+    """
+    if not os.path.exists(file_name):
+        with st.spinner(f"Downloading {file_name}..."):
+            try:
+                response = requests.get(url, stream=True)
+                response.raise_for_status()  # Raise an exception for HTTP errors
+                with open(file_name, 'wb') as file:
+                    for chunk in response.iter_content(chunk_size=1024):
+                        if chunk:
+                            file.write(chunk)
+                st.success(f"{file_name} downloaded successfully.")
+            except Exception as e:
+                st.error(f"Failed to download {file_name}: {e}")
+                raise e
+    else:
+        st.info(f"{file_name} is already available locally.")
+    return file_name
+
+# ------------------------------
+# Load Models and Data
+# ------------------------------
 
 # ------------------------------
 # Load Models and Data
