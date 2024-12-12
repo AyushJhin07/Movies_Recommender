@@ -3,3 +3,5 @@ pandas
 numpy
 joblib
 sentence_transformers
+scikit-learn==1.5.2
+torch==2.5.1
