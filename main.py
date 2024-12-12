@@ -15,11 +15,11 @@ import requests
 # ------------------------------
 
 MODEL_FILES = {
-    'TfidfVectorizer.joblib': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_1',
-    'categorical_tfidf.joblib': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_2',
-    'knn_model.joblib': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3',
-    'combined_features_normalized.npy': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_4',
-    'movies_with_embeddings.csv': 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_5'
+    'TfidfVectorizer.joblib': 'https://drive.google.com/uc?export=download&id=1_okuE11hoEQBQ-GTlhfsJNHvn24HtHPX',
+    'categorical_tfidf.joblib': 'https://drive.google.com/uc?export=download&id=1rXZ-6YkwuK7rVH96r1v08H8bYGG6XVQr',
+    'knn_model.joblib': 'https://drive.google.com/uc?export=download&id=1agA2gdSNNXnXjOp7aU8amTrnZEr6moCs',
+    'combined_features_normalized.npy': 'https://drive.google.com/uc?export=download&id=166yw8uYQYgiVo5X6SjO184GpbdGxF5HU',
+    'movies_with_embeddings.csv': 'https://drive.google.com/uc?export=download&id=1RjGo00bKSQ5ryOlzKEPTrTwjEQ6q9_Sc'
 }
 
 # ------------------------------
