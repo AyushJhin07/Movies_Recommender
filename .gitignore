@@ -1,0 +1,5 @@
+TfidfVectorizer.joblib
+categorical_tfidf.joblib
+combined_features_normalized.npy
+knn_model.joblib
+movies_with_embeddings.csv
