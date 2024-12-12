@@ -74,10 +74,17 @@ def load_models():
         sentence_model (SentenceTransformer): Loaded Sentence Transformer model.
     """
     try:
-        tfidf = joblib.load('TfidfVectorizer.joblib')  # Path to TF-IDF Vectorizer
-        knn = joblib.load('knn_model.joblib')  # Path to KNN Model
-        combined_features = np.load('combined_features_normalized.npy')  # Path to Combined Features
-        df = pd.read_csv('movies_with_embeddings.csv')  # Path to Movies DataFrame
+        # Ensure all required files are downloaded
+        tfidf_path = download_file('TfidfVectorizer.joblib', MODEL_FILES['TfidfVectorizer.joblib'])
+        knn_path = download_file('knn_model.joblib', MODEL_FILES['knn_model.joblib'])
+        features_path = download_file('combined_features_normalized.npy', MODEL_FILES['combined_features_normalized.npy'])
+        movies_path = download_file('movies_with_embeddings.csv', MODEL_FILES['movies_with_embeddings.csv'])
+
+        # Load models and data
+        tfidf = joblib.load(tfidf_path)
+        knn = joblib.load(knn_path)
+        combined_features = np.load(features_path)
+        df = pd.read_csv(movies_path)
 
         # Load Sentence Transformer Model
         sentence_model = SentenceTransformer('all-MiniLM-L6-v2')  # You can choose a different model if preferred
